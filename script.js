@@ -1,82 +1,85 @@
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mobile nav toggle
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-if (navToggle) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
+// ============================================
+// THEME TOGGLE
+// ============================================
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+// Load saved theme or default to 'light'
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.body.setAttribute('data-theme', savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.body.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  document.body.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+});
+
+// ============================================
+// PAGE NAVIGATION
+// ============================================
+const pageDots = document.querySelectorAll('.page-dot');
+const pageSections = document.querySelectorAll('.page-section');
+
+function navigateToPage(pageName) {
+  // Hide all sections
+  pageSections.forEach(section => {
+    section.classList.remove('active');
   });
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
+
+  // Remove current page indicator from all dots
+  pageDots.forEach(dot => {
+    dot.removeAttribute('aria-current');
   });
+
+  // Show requested section
+  const targetSection = document.querySelector(`[data-page="${pageName}"]`);
+  if (targetSection) {
+    targetSection.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Set current page indicator
+  const targetDot = document.querySelector(`[data-page="${pageName}"]`);
+  if (targetDot && targetDot.classList.contains('page-dot')) {
+    targetDot.setAttribute('aria-current', 'page');
+  } else {
+    // Find dot by data-page
+    const dot = Array.from(pageDots).find(d => d.getAttribute('data-page') === pageName);
+    if (dot) dot.setAttribute('aria-current', 'page');
+  }
 }
 
-// Terminal typing effect
-const typedEl = document.getElementById('typed');
-const outputEl = document.getElementById('terminal-output');
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Wire up page dots
+pageDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const pageName = dot.getAttribute('data-page');
+    navigateToPage(pageName);
+  });
+});
 
-const command = 'whoami --skills --focus';
-const output = [
-  '> Josue Cikanga',
-  '> Full-stack engineer in training (JS / React / Node)',
-  '> Currently: Tenant Management Platform',
-  '> Also: K-12 math tutor'
-].join('\n');
+// Keyboard navigation (arrow keys)
+document.addEventListener('keydown', (e) => {
+  const currentActive = document.querySelector('.page-section.active');
+  const currentIndex = Array.from(pageSections).indexOf(currentActive);
 
-function typeText(el, text, speed, onDone) {
-  let i = 0;
-  el.textContent = '';
-  function step() {
-    if (i < text.length) {
-      el.textContent += text.charAt(i);
-      i++;
-      setTimeout(step, speed);
-    } else if (onDone) {
-      onDone();
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (currentIndex < pageSections.length - 1) {
+      const nextPage = pageSections[currentIndex + 1].getAttribute('data-page');
+      navigateToPage(nextPage);
+    }
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (currentIndex > 0) {
+      const prevPage = pageSections[currentIndex - 1].getAttribute('data-page');
+      navigateToPage(prevPage);
     }
   }
-  step();
-}
+});
 
-function runTerminal() {
-  if (!typedEl || !outputEl) return;
-  if (prefersReducedMotion) {
-    typedEl.textContent = command;
-    outputEl.textContent = output;
-    return;
-  }
-  typeText(typedEl, command, 45, () => {
-    setTimeout(() => {
-      typeText(outputEl, output, 12);
-    }, 300);
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', runTerminal);
-} else {
-  runTerminal();
-}
-
-// Reveal-on-scroll for sections (subtle, respects reduced motion)
-if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(s => { s.style.opacity = '0'; s.style.transform = 'translateY(16px)'; s.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; });
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  sections.forEach(s => io.observe(s));
-}
+// Initialize first page
+navigateToPage('home');

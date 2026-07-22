@@ -10,305 +10,248 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-theme="light">
 
 <div class="grain"></div>
 
-<!-- corner crop marks -->
-<div class="crop crop-tl"></div>
-<div class="crop crop-tr"></div>
-<div class="crop crop-bl"></div>
-<div class="crop crop-br"></div>
-
 <header class="nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-mark">JC<span class="nav-mark-dot">.</span></a>
-    <nav class="nav-links">
-      <a href="#about"><span class="nav-num">01</span>About</a>
-      <a href="#skills"><span class="nav-num">02</span>Skills</a>
-      <a href="#projects"><span class="nav-num">03</span>Work</a>
-      <a href="#tutoring"><span class="nav-num">04</span>Tutoring</a>
-      <a href="#contact" class="nav-cta"><span class="nav-num">05</span>Contact</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="#home" class="nav-logo">JC<span class="nav-dot">.</span></a>
+    <div class="nav-toggle-theme">
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </header>
 
-<main id="top">
+<main id="home" class="pager-container">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">MANTRA</p>
-        <h1 class="hero-title">
-          Drafting software<br>
-          the way I draft<br>
-          proofs — <span class="hero-accent">precisely.</span>
-        </h1>
-        <p class="hero-sub">
-          Computer Science student at the University of Victoria, building full-stack
-          applications with JavaScript/React/Node.js — and tutoring the next
-          generation of K-12 students through the math I learned to love first.
+  <!-- HOME SECTION -->
+  <section class="page-section active" data-page="home">
+    <div class="section-content">
+      <div class="hero-content">
+        <h1 class="hero-title">Josue Cikanga</h1>
+        <p class="hero-subtitle">Full-stack engineer in training</p>
+        <p class="hero-description">
+          CS student at University of Victoria, building full-stack applications with JavaScript/React/Node.js, 
+          and tutoring the next generation of K-12 students
         </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View the work<span class="btn-arrow">→</span></a>
-          <a href="#contact" class="btn btn-ghost">Get in touch</a>
-          <a href="/jcResume.pdf" class="btn btn-ghost" download>Download Résumé</a>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="navigateToPage('about')">Explore →</button>
         </div>
-      </div>
-
-      <div class="hero-panel" aria-hidden="true">
-        <div class="terminal">
-          <div class="terminal-bar">
-            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-            <span class="terminal-title">josue@c'kang ~ </span>
-          </div>
-          <div class="terminal-body">
-            <p><span class="prompt">$</span> <span id="typed"></span><span class="cursor">&#9608;</span></p>
-            <div id="terminal-output" class="terminal-output"></div>
-          </div>
-        </div>
-
-        <svg class="blueprint-svg" viewBox="0 0 420 300" aria-hidden="true">
-          <!-- dimension lines -->
-          <line x1="20" y1="20" x2="400" y2="20" class="dim-line"/>
-          <line x1="20" y1="15" x2="20" y2="25" class="dim-tick"/>
-          <line x1="400" y1="15" x2="400" y2="25" class="dim-tick"/>
-          <text x="180" y="12" class="dim-label">380.0 MM</text>
-
-          <circle cx="80" cy="150" r="26" class="node node-a"/>
-          <circle cx="210" cy="90" r="26" class="node node-b"/>
-          <circle cx="210" cy="210" r="26" class="node node-c"/>
-          <circle cx="340" cy="150" r="26" class="node node-d"/>
-
-          <line x1="104" y1="150" x2="188" y2="100" class="link"/>
-          <line x1="104" y1="150" x2="188" y2="200" class="link"/>
-          <line x1="234" y1="90" x2="316" y2="140" class="link"/>
-          <line x1="234" y1="210" x2="316" y2="160" class="link"/>
-
-          <text x="80" y="154" class="node-label">JS</text>
-          <text x="210" y="94" class="node-label">REACT</text>
-          <text x="210" y="214" class="node-label">NODE</text>
-          <text x="340" y="154" class="node-label">SQL</text>
-        </svg>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <p class="section-label">ABOUT</p>
-    <div class="about-grid">
-      <h2 class="section-title">Two disciplines,<br>one way of thinking.</h2>
-      <div class="about-body">
+  <!-- ABOUT SECTION -->
+  <section class="page-section" data-page="about">
+    <div class="section-content">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
         <p>
-          I'm an aspiring software Engineer with a strong foundation in Java Data Structure,
-          JavaScript and React, currently completing my B.Sc. in Computer Science at the
-          University of Victoria. My path started at Golden Gate University, where I worked
-          toward an Associate of Science in Applied Computing and made the Dean's List — and
-          it's taken me through networking fundamentals, iOS development, and the foundation
-          of DSA.
+          I'm an aspiring software engineer with a strong foundation in Java, JavaScript, and React, currently 
+          completing my B.Sc. in Computer Science at the University of Victoria. My path started at Golden Gate University, 
+          where I worked toward an Associate of Science in Applied Computing and made the Dean's List.
         </p>
         <p>
-          What ties it together is the same instinct I use for both code and math: break
-          the problem down, find the underlying structure, and build back up from there.
-          I bring that instinct to a tenant management platform I'm actively developing,
-          and to the K-12 students I tutor every week.
+          What ties it all together is the same instinct I use for both code and math: break the problem down, 
+          find the underlying structure, and build back up from there. I bring that instinct to a tenant management 
+          platform I'm actively developing, and to the K-12 students I tutor every week.
         </p>
-        <div class="about-stats">
-          <div class="stat">
-            <span class="stat-num">2028</span>
-            <span class="stat-label">Expected grad, B.Sc. CS<br>University of Victoria</span>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-value">2028</div>
+            <div class="stat-label">Expected grad<br>University of Victoria</div>
           </div>
-          <div class="stat">
-            <span class="stat-num">2025</span>
-            <span class="stat-label">A.S. Applied Computing<br>Golden Gate University</span>
+          <div class="stat-box">
+            <div class="stat-value">2025</div>
+            <div class="stat-label">A.S. Applied Computing<br>Golden Gate University</div>
           </div>
-          <div class="stat">
-            <span class="stat-num">K–12</span>
-            <span class="stat-label">Math tutoring<br>alongside coursework</span>
+          <div class="stat-box">
+            <div class="stat-value">K–12</div>
+            <div class="stat-label">Math tutoring<br>alongside coursework</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section section-alt">
-    <p class="section-label">TOOLING</p>
-    <h2 class="section-title">What I build with.</h2>
-
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Languages &amp; Frameworks</h3>
-        <ul class="tag-list">
-          <li>JavaScript</li><li>Node.js</li><li>Express.js</li><li>React</li>
-          <li>EJS</li><li>Java</li><li>HTML5</li><li>CSS3</li><li>PostgreSQL</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Engineering Practice</h3>
-        <ul class="tag-list">
-          <li>Git</li><li>REST APIs</li><li>Auth &amp; encryption</li>
-          <li>MVVM architecture</li><li>JSON parsing</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Systems &amp; Networking</h3>
-        <ul class="tag-list">
-          <li>Active Directory</li><li>TCP/IP</li><li>Subnetting</li>
-          <li>DNS</li><li>DHCP</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Certifications</h3>
-        <ul class="plain-list">
-          <li>Google IT Support Certificate — Coursera, Dec 2023</li>
-          <li>21st Century Leadership Seminar — PGLF, Sep 2022</li>
-          <li>Rise Global Finalist — Schmidt Futures &amp; Rhodes Trust, 2021</li>
-        </ul>
+  <!-- SKILLS SECTION -->
+  <section class="page-section" data-page="skills">
+    <div class="section-content">
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="skills-content">
+        <div class="skill-group">
+          <h3>Languages & Frameworks</h3>
+          <div class="tag-list">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">React</span>
+            <span class="tag">Java</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Engineering Practice</h3>
+          <div class="tag-list">
+            <span class="tag">Git</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Auth & Encryption</span>
+            <span class="tag">MVVM Architecture</span>
+            <span class="tag">JSON Parsing</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Systems & Networking</h3>
+          <div class="tag-list">
+            <span class="tag">Active Directory</span>
+            <span class="tag">TCP/IP</span>
+            <span class="tag">Subnetting</span>
+            <span class="tag">DNS</span>
+            <span class="tag">DHCP</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <p class="section-label">SELECTED WORK</p>
-    <h2 class="section-title">Things I've shipped<br>and things in progress.</h2>
+  <!-- PROJECTS SECTION -->
+  <section class="page-section" data-page="projects">
+    <div class="section-content">
+      <h2 class="section-title">Selected Work</h2>
+      <div class="projects-content">
+        <article class="project-card">
+          <div class="project-header">
+            <h3>Tenant Management Platform</h3>
+            <span class="project-status active">In Progress</span>
+          </div>
+          <p>An open-source web application that gives landlords and tenants one place to manage contracts, payments 
+          and messages. Building with Node.js, Express.js, PostgreSQL, and React.</p>
+          <div class="project-tags">
+            <span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>React</span><span>Auth</span>
+          </div>
+        </article>
 
-    <div class="projects-list">
+        <article class="project-card">
+          <div class="project-header">
+            <h3>iOS App — CodePath</h3>
+            <span class="project-status">Completed</span>
+          </div>
+          <p>Built a Swift app with user authentication, networking and a full UI layer using MVVM architecture. 
+          Led workflow conversations in a four-person team.</p>
+          <div class="project-tags">
+            <span>Swift</span><span>MVVM</span><span>REST APIs</span><span>Team Lead</span>
+          </div>
+        </article>
 
-      <article class="project-row">
-        <div class="project-meta">
-          <span class="project-status status-active">In progress</span>
-          <span class="project-dates">May 2025 — Present</span>
-        </div>
-        <div class="project-main">
-          <h3>Tenant Management Platform</h3>
-          <p>
-            An open-source web application that gives landlords and tenants one place to
-            manage contracts, payments and messages. I'm focused on secure, scalable
-            REST APIs and interfaces people actually want to use — currently building
-            out authentication and encryption on a Node.js, Express.js, PostgreSQL and
-            React stack.
-          </p>
-          <ul class="project-tags">
-            <li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>React</li><li>Auth</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="project-row">
-        <div class="project-meta">
-          <span class="project-status status-done">Completed</span>
-          <span class="project-dates">Feb — Apr 2024</span>
-        </div>
-        <div class="project-main">
-          <h3>iOS App — CodePath</h3>
-          <p>
-            Built a Swift app with user authentication, networking and a full UI layer
-            using MVVM architecture. Integrated REST APIs and local persistence, and
-            worked in a four-person team where I led the day-to-day workflow
-            conversations.
-          </p>
-          <ul class="project-tags">
-            <li>Swift</li><li>MVVM</li><li>REST APIs</li><li>Team lead</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="project-row">
-        <div class="project-meta">
-          <span class="project-status status-done">Completed</span>
-          <span class="project-dates">May — Aug 2023</span>
-        </div>
-        <div class="project-main">
-          <h3>Outlier Odyssey — Golden Gate University</h3>
-          <p>
-            A 2D scenario-based navigation game built to teach programming logic.
-            I implemented core Java concepts — OOP, constructors, inheritance,
-            multidimensional arrays, control flow and string manipulation — and led a
-            peer-support Discord community to help other students through the same
-            material.
-          </p>
-          <ul class="project-tags">
-            <li>Java</li><li>OOP</li><li>Game logic</li><li>Peer mentorship</li>
-          </ul>
-        </div>
-      </article>
-
+        <article class="project-card">
+          <div class="project-header">
+            <h3>Outlier Odyssey — Java Game</h3>
+            <span class="project-status">Completed</span>
+          </div>
+          <p>A 2D scenario-based navigation game built to teach programming logic. Implemented core Java concepts 
+          and led a peer-support Discord community.</p>
+          <div class="project-tags">
+            <span>Java</span><span>OOP</span><span>Game Logic</span><span>Peer Mentorship</span>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- TUTORING -->
-  <section id="tutoring" class="section section-alt tutoring">
-    <p class="section-label">TUTORING</p>
-    <div class="tutoring-grid">
-      <div class="tutoring-copy">
-        <h2 class="section-title">I also teach the math<br>that got me here.</h2>
+  <!-- TUTORING SECTION -->
+  <section class="page-section" data-page="tutoring">
+    <div class="section-content">
+      <h2 class="section-title">Tutoring</h2>
+      <div class="tutoring-content">
         <p>
-          Alongside my coursework, I tutor K-12 students in math — the same subject
-          that first pulled me toward logic, structure and problem-solving. Tutoring
-          keeps my fundamentals sharp and reminds me that the clearest explanation is
-          usually the right one, whether I'm annotating a proof for a ten-year-old or
-          writing a docstring for a teammate.
+          Alongside my coursework, I tutor K-12 students in math — the same subject that first pulled me toward 
+          logic, structure and problem-solving. Tutoring keeps my fundamentals sharp and reminds me that the clearest 
+          explanation is usually the right one.
         </p>
-        <ul class="tutoring-points">
+        <ul class="tutoring-list">
           <li>Breaking down grade-level math into clear, step-by-step reasoning</li>
           <li>Building confidence through patient, one-on-one problem-solving</li>
           <li>Translating "how" into "why" — the same habit I bring to debugging</li>
         </ul>
       </div>
-      <div class="tutoring-figure" aria-hidden="true">
-        <svg viewBox="0 0 300 260" class="chalk-svg">
-          <line x1="20" y1="40" x2="280" y2="40" class="chalk-line"/>
-          <text x="20" y="30" class="chalk-label">x² + y² = r²</text>
-          <circle cx="150" cy="150" r="70" class="chalk-circle"/>
-          <line x1="150" y1="150" x2="220" y2="150" class="chalk-line"/>
-          <line x1="150" y1="150" x2="150" y2="80" class="chalk-line"/>
-          <text x="178" y="145" class="chalk-label small">r</text>
-          <line x1="20" y1="230" x2="280" y2="230" class="chalk-line"/>
-          <text x="20" y="222" class="chalk-label">d/dx [x²] = 2x</text>
-        </svg>
-      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section contact">
-    <p class="section-label">CONTACT</p>
-    <h2 class="section-title contact-title">Let's build<br>something together.</h2>
-    <p class="contact-sub">
-      Open to internships, junior engineering roles, and mentorship — reach out any time.
-    </p>
-    <div class="contact-links">
-      <a href="mailto:josuebuhendwac@gmail.com" class="contact-link">
-        <span class="contact-label">Email</span>
-        <span class="contact-value">josuebuhendwac@gmail.com</span>
-      </a>
-      <a href="tel:+12505109529" class="contact-link">
-        <span class="contact-label">Phone</span>
-        <span class="contact-value">(250) 510-9529</span>
-      </a>
-      <a href="https://www.linkedin.com/in/josue-cikanga" class="contact-link" id="linkedin-link">
-        <span class="contact-label">LinkedIn</span>
-        <span class="contact-value">Check LinkedIn Profile →</span>
-      </a>
-      <a href="https://github.com/JCkang23" class="contact-link" id="github-link">
-        <span class="contact-label">GitHub</span>
-        <span class="contact-value">Check Github Profile →</span>
-      </a>
+  <!-- CONTACT SECTION -->
+  <section class="page-section" data-page="contact">
+    <div class="section-content">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <p class="contact-intro">Open to internships, junior engineering roles, and mentorship — reach out any time.</p>
+        <div class="contact-links">
+          <a href="mailto:josuebuhendwac@gmail.com" class="contact-item">
+            <span class="contact-icon">✉</span>
+            <span class="contact-text">
+              <strong>Email</strong>
+              <em>josuebuhendwac@gmail.com</em>
+            </span>
+          </a>
+          <a href="tel:+12505109529" class="contact-item">
+            <span class="contact-icon">☎</span>
+            <span class="contact-text">
+              <strong>Phone</strong>
+              <em>(250) 510-9529</em>
+            </span>
+          </a>
+          <a href="https://www.linkedin.com/in/josue-cikanga" target="_blank" class="contact-item">
+            <span class="contact-icon">in</span>
+            <span class="contact-text">
+              <strong>LinkedIn</strong>
+              <em>View Profile →</em>
+            </span>
+          </a>
+          <a href="https://github.com/JCkang23" target="_blank" class="contact-item">
+            <span class="contact-icon">⚙</span>
+            <span class="contact-text">
+              <strong>GitHub</strong>
+              <em>View Profile →</em>
+            </span>
+          </a>
+        </div>
+        <div class="contact-cta">
+          <a href="/jcResume.pdf" class="btn btn-primary" download>Download Résumé</a>
+        </div>
+      </div>
     </div>
   </section>
 
 </main>
 
+<!-- PAGE INDICATORS & NAVIGATION -->
+<nav class="page-nav">
+  <button class="page-dot" data-page="home" aria-label="Home" aria-current="page"></button>
+  <button class="page-dot" data-page="about" aria-label="About"></button>
+  <button class="page-dot" data-page="skills" aria-label="Skills"></button>
+  <button class="page-dot" data-page="projects" aria-label="Projects"></button>
+  <button class="page-dot" data-page="tutoring" aria-label="Tutoring"></button>
+  <button class="page-dot" data-page="contact" aria-label="Contact"></button>
+</nav>
+
 <footer class="footer">
-  <p>Designed by J_C'kang</p>
-  <p> © <span id="year"></span></p>
+  <p>Designed by J_C'kang • © <span id="year"></span></p>
 </footer>
 
 <script src="script.js"></script>
