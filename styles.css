@@ -487,6 +487,7 @@ p { margin: 0; }
     border: none;
     cursor: pointer;
     padding: 6px;
+    
   }
   .nav-toggle span { width: 20px; height: 2px; background: var(--line); }
   .about-stats { grid-template-columns: 1fr; gap: 18px; }

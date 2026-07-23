@@ -63,6 +63,7 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', runTerminal);
 } else {
   runTerminal();
+  
 }
 
 // Reveal-on-scroll for sections (subtle, respects reduced motion)
