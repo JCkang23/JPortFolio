@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('jc-theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    } catch (e) {}
+  })();
+</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,11 +40,7 @@
     <div class="avatar-frame">
       <div class="avatar-glow"></div>
       <div class="avatar-circle">
-        <svg viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg">
-          <rect width="84" height="84" fill="#1a1a1a"/>
-          <circle cx="42" cy="34" r="15" fill="#e8e8e8"/>
-          <path d="M14 80 Q42 52 70 80 Z" fill="#e8e8e8"/>
-        </svg>
+        <img src="assets/avatar.jpg" alt="Josue Cikanga" width="84" height="84">
       </div>
     </div>
   </div>
@@ -43,11 +48,10 @@
   <p class="bio">
     I'm an aspiring software engineer and Computer Science student at the
     University of Victoria, currently building a tenant management platform
-    with JavaScript, React and Node.js. Before that, I worked toward an Associate of
+    with JavaScript, React and Node.js. Before that, I earned an Associate of
     Science in Applied Computing at Golden Gate University (Dean's List, Fall
-    '23) where I got introduced to Object Oriented Programming. Alongside my coursework,
-    I tutor K-12 students in math — the same subject that first pulled me toward structured
-    problem-solving.
+    '23). Alongside my coursework, I tutor K-12 students in math — the same
+    subject that first pulled me toward structured problem-solving.
   </p>
 
   <div class="now-list">
@@ -80,21 +84,25 @@
   </div>
 
   <div class="footer-links mono">
-    <a href="https://github.com/JCkang23" id="github-link" target="_blank" rel="noopener">
+    <a href="#" id="github-link" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2A11.4 11.4 0 0 1 12 5.8c1 0 2 .1 3 .4 2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12c0-6.3-5.2-11.5-11.5-11.5z"/></svg>
       github
     </a>
-    <a href="https://www.linkedin.com/in/josue-cikanga" id="linkedin-link" target="_blank" rel="noopener">
+    <a href="#" id="linkedin-link" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5.5V9H8zM6.7 7.7a1.4 1.4 0 1 1 0-2.9 1.4 1.4 0 0 1 0 2.9zM19 19h-2.5v-5.1c0-1.2 0-2.8-1.7-2.8-1.7 0-2 1.3-2 2.7V19H10.3V9h2.4v1.3h.1c.3-.6 1.2-1.3 2.5-1.3 2.6 0 3.1 1.7 3.1 4z"/></svg>
       linkedin
     </a>
-    <a href="https://calendly.com/josuecik" id="calendly-link" target="_blank" rel="noopener">
+    <a href="#" id="calendly-link" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       book a call
     </a>
     <a href="mailto:josuebuhendwac@gmail.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" fill="none" stroke="none"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
       email
+    </a>
+    <a href="#" id="gofundme-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      support my education
     </a>
   </div>
 
