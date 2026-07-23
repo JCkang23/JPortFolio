@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Josue Cikanga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="nav-wrap">
+  <div class="nav-pill mono">
+    <a href="index.html">home</a>
+    <a href="projects.html" class="active">projects</a>
+    <a href="tutoring.html">tutoring</a>
+  </div>
+  <button class="theme-toggle" aria-label="Toggle dark mode">
+    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  </button>
+</div>
+
+<main class="wide">
+  <h2 class="section-heading mono" style="margin-bottom:28px;">Projects</h2>
+
+  <div class="projects-grid">
+
+    <article class="project-card">
+      <div class="project-thumb" style="--thumb-bg:#eef2f5; --thumb-bg-dark:#131a1f;">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#5b7889" stroke-width="1.4">
+          <path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-status mono">In progress · 2025–Present</span>
+        <h3>Tenant Management Platform</h3>
+        <p>An open-source web app for landlords and tenants to manage contracts, payments and messages — built with secure, scalable REST APIs.</p>
+        <ul class="project-tags mono">
+          <li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>React</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-thumb" style="--thumb-bg:#fdeee9; --thumb-bg-dark:#201410;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="#e0693f">
+          <path d="M12.1 2c-1 2.6-3 4-3 7 0 2.1 1.3 3.9 3.2 4.7-.1-.5-.2-1-.2-1.5 0-2.6 2.7-4.3 2.7-7C14.8 3.5 13.3 2.4 12.1 2zM8.7 15c-2.3 0-4.2 1.9-4.2 4.2 0 1.6 1 3 2.4 3.7-.4-1.4-.1-3 .9-4.1.9-.9 2.1-1.3 3.3-1.1-.3-1.5-1.6-2.7-2.4-2.7zM16.2 12.9c-.4 1.9-2 3.4-4 3.7 1.6.9 2.6 2.6 2.6 4.5 0 1-.3 1.9-.8 2.7 2.5-.5 4.4-2.7 4.4-5.3 0-2.4-1.6-4.5-2.2-5.6z"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-status mono">Completed · Feb–Apr 2024</span>
+        <h3>iOS App — CodePath</h3>
+        <p>A Swift app with authentication, networking and a full MVVM UI layer, built and shipped with a four-person team I helped coordinate.</p>
+        <ul class="project-tags mono">
+          <li>Swift</li><li>MVVM</li><li>REST APIs</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-thumb" style="--thumb-bg:#0f0f0f; --thumb-bg-dark:#0f0f0f;">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <defs>
+            <pattern id="grid" width="12" height="12" patternUnits="userSpaceOnUse">
+              <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#333" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="120" height="120" fill="url(#grid)"/>
+          <circle cx="60" cy="60" r="18" fill="none" stroke="#888" stroke-width="1.2"/>
+          <circle cx="60" cy="60" r="30" fill="none" stroke="#555" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <span class="project-status mono">Completed · May–Aug 2023</span>
+        <h3>Outlier Odyssey</h3>
+        <p>A 2D scenario-based navigation game built at Golden Gate University to teach programming logic through Java fundamentals.</p>
+        <ul class="project-tags mono">
+          <li>Java</li><li>OOP</li><li>Game logic</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
